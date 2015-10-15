@@ -11,15 +11,14 @@ for date in $@
 do
 	# Validation of existence of directory.
 	echo "Directory of ${root_dir}${date} is being checked..."
-	hadoop fs -test -e ${root_dir}${date}
-	if [ $? -ne 0 ]
+	if hadoop fs -test -e ${root_dir}${date}
 	then
-		echo "Error! The path is not existed. Please check it."
-		exit 1
+		echo "The check was passed."
+		# Join the new input path.
+		input_path="${input_path} ${root_dir}${date}/part-*"
+	else
+		echo "Error! The path is not existed. Please check it."	
 	fi
-	echo "The check was passed."
-	# Join the new input path.
-	input_path="${input_path} ${root_dir}${date}/part-*"
 done
 echo "The input path for hadoop streaming is: ${input_path}"
 
@@ -28,11 +27,10 @@ echo "The input path for hadoop streaming is: ${input_path}"
 #
 output_path="/app/ecom/fcr-ad/zhushixiang/click_q"
 echo "Directory of ${output_path} is being checked..."
-hadoop fs -test -e ${output_path}
-if [ $? -ne 0 ]
+if hadoop fs -test -e ${output_path}
 then
-	echo "Error! The path is not existed. Please check it."
-	exit 1
+	echo "Warning! The output path ${output_path} is existed. Removing..."
+	hadoop fs -rmr ${output_path}
 fi
 echo "The check was passed."
 echo "The output path for hadoop streaming is: ${output_path}"

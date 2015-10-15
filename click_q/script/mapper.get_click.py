@@ -1,21 +1,23 @@
+#!/usr/bin/env python
 import sys
 import utils
 
 if __name__ == "__main__":
 	# Validation of the number of parameters
 	if len(sys.argv) != 2:
-		raise 
+		raise
 	# Read dictionary file path from first command parameter
 	dict_file_path = sys.argv[1]
 	# Load word dictionary into 'my_dict'
 	my_dict = utils.load_dict(dict_file_path)
 	# Map
 	for line in sys.stdin:
+		asp, ubs, aries = ("", "", "")
 		# Extract useful infomation.
 		try:
 			asp, ubs, aries = line.strip().split("   ")
 		except:
-			pass
+			continue
 		# - which tag does the tuple belong to 
 		tag = ""
 		OVLEXP_ID_LIST  = aries[95].split("#")
