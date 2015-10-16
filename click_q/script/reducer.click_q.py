@@ -28,10 +28,10 @@ if __name__ == "__main__":
             sum_good_click  = float(good_click)
             sum_bad_click   = float(bad_click)
             sum_total_click = float(total_click)
-                
+            
         last_tag  = tag
         last_flag = flag
-            
+        
     # Calculate ClickQ
     if sum_total_click == 0:
         click_q = -1

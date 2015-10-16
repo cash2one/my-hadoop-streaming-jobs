@@ -5,10 +5,12 @@ then
 fi
 
 cp ../lib/utils.py .
-cat ../resource/base_ue_example | python mapper.get_click.py ../resource/20150922_cn_dict.txt > ../log/test_mapper.log
+cat ../resource/base_ue_example_1 | python mapper.get_click.py ../resource/20150922_cn_dict.txt > ../log/test_mapper.log
 
 if [ $? == 0 ] && [ -f utils.py ]
 then 
 	rm utils.py
 	rm utils.pyc
 fi
+
+cat ../log/test_mapper.log

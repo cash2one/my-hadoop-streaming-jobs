@@ -19,8 +19,9 @@ if __name__ == "__main__":
 		except:
 			continue
 		# - which tag does the tuple belong to 
+		aries_val = aries.split("\t")
 		tag = ""
-		OVLEXP_ID_LIST  = aries[95].split("#")
+		OVLEXP_ID_LIST  = aries_val[95].split("#")
 		if "207L-1011" in OVLEXP_ID_LIST:
 			tag = "d0_clkqs_pc"
 		elif "207L-1010" in OVLEXP_ID_LIST:
@@ -30,7 +31,7 @@ if __name__ == "__main__":
 		else:
 			tag = "other_pc"
 		# - Whether cn is baidu or other
-		cn = aries[5]
+		cn = aries_val[5]
 		is_baidu_other = ""
 		if cn in my_dict:
 			if my_dict[cn] == "organic" or my_dict[cn] == "union2baidu":
@@ -43,7 +44,7 @@ if __name__ == "__main__":
 		ubs_val     = ubs.split("\t")
 		good_click  = int(ubs_val[5])
 		bad_click   = int(ubs_val[6])
-		total_click = good_click + bad_click
+		total_click = 1
 		# Output result to stdin    
 		click_info = (tag, is_baidu_other, good_click, bad_click, total_click)
 		if is_baidu_other != "null":
