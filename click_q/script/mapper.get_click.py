@@ -21,7 +21,7 @@ if __name__ == "__main__":
 		# - which tag does the tuple belong to 
 		aries_val = aries.split("\t")
 		tag = ""
-		OVLEXP_ID_LIST  = aries_val[95].split("#")
+		OVLEXP_ID_LIST = aries_val[95].split("#")
 		if "207L-1011" in OVLEXP_ID_LIST:
 			tag = "d0_clkqs_pc"
 		elif "207L-1010" in OVLEXP_ID_LIST:
