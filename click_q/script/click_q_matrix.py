@@ -2,8 +2,8 @@
 import sys
 
 def calculate_ele(dz, di, flag):
-	click_q = (dz[flag][3] - di[flag][3])/di[flag][3]
-	bad_click_rate = di[flag][1]/di[flag][2]
+	click_q = (di[flag][3] - dz[flag][3])/di[flag][3]
+	bad_click_rate = (di[flag][4] - dz[flag][4])/di[flag][4]
 	return (click_q, bad_click_rate)
 
 if __name__ == "__main__":
