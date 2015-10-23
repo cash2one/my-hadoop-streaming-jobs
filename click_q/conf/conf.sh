@@ -38,7 +38,7 @@ echo "The output path for hadoop streaming is: ${output_path}"
 #
 # - Essential Parameter.
 #
-statistic_reduce_task_num=8
+statistic_reduce_task_num=1
 min_split_size=100000000
 num_map_capacity=1000
 num_reduce_capacity=1000

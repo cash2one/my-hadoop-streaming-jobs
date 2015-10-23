@@ -20,7 +20,7 @@ if __name__ == "__main__":
 		tag, flag, sum_good_click, sum_bad_click, sum_total_click, click_q = line.strip().split("\t")
 		bad_click_rate = float(sum_bad_click) / float(sum_total_click)
 		c_d[tag][flag] = [float(sum_good_click), float(sum_bad_click), float(sum_total_click), float(click_q), float(bad_click_rate)]
-	
+		
 	# Calculate integrity
 	for key, value in c_d.iteritems():
 		value["integrity"].append(value["baidu"][0] + value["other"][0])
@@ -28,7 +28,7 @@ if __name__ == "__main__":
 		value["integrity"].append(value["baidu"][2] + value["other"][2])
 		value["integrity"].append((value["integrity"][0] + value["integrity"][2] - value["integrity"][1])/(2*value["integrity"][2]))
 		value["integrity"].append(value["integrity"][1]/value["integrity"][2])
-		 
+		
 	# Calculate matrix
 	# - For autonomy:
 	autonomy_matrix = [
