@@ -20,7 +20,7 @@ do
 	then
 		echo "The check was passed."
 		# Join the new input path.
-		input_path="${input_path} ${base_path}/${date}/part-*"
+		input_path="${input_path} ${base_path}/${date}/*/part-*"
 	else
 		echo "Error! The path is not existed. Please check it."
 		exit 1
@@ -49,7 +49,7 @@ hadoop streaming \
 	-D stream.num.map.output.key.fields=2 \
 	-D map.output.key.field.separator="\t" \
 	-D num.key.fields.for.partition=2 \
-	-D mapred.reduce.tasks=${normal_reduce_tasks_num} \
+	-D mapred.reduce.tasks=${statistic_reduce_task_num} \
 	-D mapred.combine.input.format.local.only=false \
 	-D mapred.min.split.size=${min_split_size} \
 	-D mapred.job.map.capacity=${num_map_capacity} \
