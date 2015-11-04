@@ -31,7 +31,7 @@ def emit_statistics(cuid_tag, cmatchid_tag, sum_shows, sum_clks, sum_price, sum_
         print >> sys.stderr, "WARNING, cuid tag %s was illegal. 0 or 1 was expeceted." % (cuid_tag)
 
     cmatchid_flag = ""
-    if cmatchid_tag == "0":
+    if cmatchid_tag == "2":
         cmatchid_flag = "total_cmatch"
     elif cmatchid_tag == "1":
         cmatchid_flag = "222-223_cmatch"
@@ -63,9 +63,9 @@ for line in sys.stdin:
         # ctr3's molecule
         ctr3_molecule += clk * dis
     elif cuid_tag != last_cuid_tag or cmatchid_tag != last_cmatchid_tag:
-        if last_cuid_tag != "\N" or last_cmatchid_tag != "\N":
+        if last_cuid_tag != "\N" and last_cmatchid_tag != "\N":
             # Basic statistics
-            emit_statistics(cuid_tag, cmatchid_tag, sum_shows, sum_clks, sum_price, sum_bids, ctr3_molecule)
+            emit_statistics(last_cuid_tag, last_cmatchid_tag, sum_shows, sum_clks, sum_price, sum_bids, ctr3_molecule)
         # Clear the buffer
         sum_shows = show
         sum_clks = clk
@@ -74,6 +74,6 @@ for line in sys.stdin:
         ctr3_molecule = clk * dis
 
     last_cmatchid_tag = cmatchid_tag
-    last_cuid_tag = last_cuid_tag
+    last_cuid_tag = cuid_tag
 
-emit_statistics(cuid_tag, cmatchid_tag, sum_shows, sum_clks, sum_price, sum_bids, ctr3_molecule)
+emit_statistics(last_cuid_tag, last_cmatchid_tag, sum_shows, sum_clks, sum_price, sum_bids, ctr3_molecule)
