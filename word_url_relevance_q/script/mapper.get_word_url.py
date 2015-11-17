@@ -6,7 +6,7 @@ for line in sys.stdin:
 	level    = val[0]
 	
 	if level == "4":
-		bidword  = url_util.regularize_url(val[6])
+		bidword  = url_util.regularize_str(val[6])
 		pc_url   = val[13]
 		wise_url = val[15]
 		if pc_url != "DFT":
