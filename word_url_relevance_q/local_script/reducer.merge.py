@@ -11,8 +11,8 @@ for line in sys.stdin:
 	tag = vals[2]
 	
 	if tag == "2" and bidword == cur_bidword and url == cur_url:
-		rel_q = vals[3]
 		ori_val = cur_value.split("\1")
+		cur_value = vals[3]
 		query = ori_val[0]
 		index = ori_val[12]
 		mark1 = ori_val[8]
@@ -25,5 +25,5 @@ for line in sys.stdin:
 	if tag == "1":
 		cur_bidword = bidword
 		cur_url = url
-		cur_value = vals[3]
-
+		rel_q = vals[3]
+		
