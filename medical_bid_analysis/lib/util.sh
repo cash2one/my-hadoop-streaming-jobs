@@ -30,3 +30,35 @@ function check_exist_path
 		fi
 	fi
 }
+
+function log
+{
+    local __msg=$@
+    local __prefix=[`date +"%Y-%m-%d %H:%M:%S"`]
+    if [ "$LOG_FILE" == "" ] ; then
+        echo "${__prefix}${__msg}"
+    else
+        echo "${__prefix}${__msg}" >>$LOG_FILE
+    fi
+}
+
+function check_return_value
+{
+    if [ $? -eq 0 ] ; then
+        log "[succ]"
+    else
+        log "[fail]"
+        log "[I will exit, sorry!!!]"
+        exit 1
+    fi  
+}
+
+function check_do
+{
+    __cmd=$@
+    log "${__cmd}"
+    ${__cmd}
+    check_return_value
+}
+
+
